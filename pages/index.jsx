@@ -24,10 +24,12 @@ export default function Home() {
   const searchLocation = async (event) => {
     if (event.key === "Enter") {
       try {
-        const response = await axios.get(url)
+        // console.clear();
+        setData({})
+        const response = await axios.get(url);
         const resdata = await response.data;
         setData(resdata)
-        setWeather(resdata.weather)
+        // setWeather(resdata.weather)
         setErrorMessage("")
         console.log(resdata)
 
@@ -36,7 +38,7 @@ export default function Home() {
         console.log(error);
         setErrorMessage("Please enter a valid location 🙉");
         setData({});
-        setWeather();
+        // setWeather();
       }
       setLocation('');
     }
@@ -50,18 +52,18 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
+      <main className={`${styles.main} bg-blue-50` }>
         <Header />
 
         <div className='h-screen mt-10 flex flex-col items-center' >
           {errorMessage && <motion.span initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} className='text-red-500 font-bold text-lg'>{errorMessage}</motion.span>}
-          <div className="flex flex-col gap-3 items-center">
-            <input className="p-4 outline-none border-slate-500 border-2 rounded-lg" type="text" value={location} onChange={event => setLocation(event.target.value)} placeholder="enter location" onKeyDown={searchLocation} />
+          <div className="flex flex-col gap-5 items-center">
+            <input className="p-4 outline-none border-slate-500 border-2 rounded-lg bg-zinc-50" type="text" value={location} onChange={event => setLocation(event.target.value)} placeholder="Enter location" onKeyDown={searchLocation} />
             {data.name && <WeatherCard data={data} />}
           </div>
         </div>
 
-        <Footer />
+        {/* <Footer /> */}
       </main>
     </>
   )
