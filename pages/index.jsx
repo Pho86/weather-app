@@ -3,16 +3,17 @@ import Image from 'next/image'
 import styles from '@/styles/Home.module.css'
 import axios from 'axios';
 import { useState } from 'react';
-import { Inter } from '@next/font/google'
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-const inter = Inter({ subsets: ['latin'] })
+import { motion } from 'framer-motion';
+import WeatherCard from '@/components/WeatherCard';
 
 export default function Home() {
+  const [allData, setAllData] = useState([]);
+  
   const [data, setData] = useState({})
   const [location, setLocation] = useState("");
   const [weather, setWeather] = useState();
-  const [temperature, setTemperature] = useState();
   const [errorMessage, setErrorMessage] = useState('');
 
   let apiKey = process.env.NEXT_PUBLIC_WEATHER_API_KEY
@@ -26,7 +27,6 @@ export default function Home() {
         const response = await axios.get(url)
         const resdata = await response.data;
         setData(resdata)
-        setTemperature(resdata.main)
         setWeather(resdata.weather)
         setErrorMessage("")
         console.log(resdata)
@@ -37,7 +37,6 @@ export default function Home() {
         setErrorMessage("Please enter a valid location 🙉");
         setData({});
         setWeather();
-        setTemperature();
       }
       setLocation('');
     }
@@ -54,23 +53,11 @@ export default function Home() {
       <main className={styles.main}>
         <Header />
 
-        <div className='h-screen mt-10 flex flex-col items-center'>
-          <span className='text-red-500 font-bold text-lg'>{errorMessage}</span>
-          <div className="flex flex-col gap-5 items-center">
-
-          <input className="p-4" type="text" value={location} onChange={event => setLocation(event.target.value)} placeholder="enter location" onKeyDown={searchLocation} />
-          <h1 className='mt-2'>{data.name && <><span className='font-bold text-5xl'>{data.name}</span></>}</h1>
-          {
-            weather && weather.map((w, i) => {
-              return <div key={i}>
-                <div className='capitalize'>{w.description}</div>
-                {/* <div>{w.main}</div> */}
-              </div>
-            })
-          }
-          {temperature && <p>Temperature {temperature.temp}℃</p>}
-          {temperature && <p>Feels like {temperature.feels_like}℃</p>}
-          {data.wind && <p>Wind speed is {data.wind.speed}m/s</p>}
+        <div className='h-screen mt-10 flex flex-col items-center' >
+          {errorMessage && <motion.span initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} className='text-red-500 font-bold text-lg'>{errorMessage}</motion.span>}
+          <div className="flex flex-col gap-3 items-center">
+            <input className="p-4 outline-none border-slate-500 border-2 rounded-lg" type="text" value={location} onChange={event => setLocation(event.target.value)} placeholder="enter location" onKeyDown={searchLocation} />
+            {data.name && <WeatherCard data={data} />}
           </div>
         </div>
 
