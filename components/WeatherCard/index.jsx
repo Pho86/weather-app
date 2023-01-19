@@ -14,22 +14,22 @@ export default function WeatherCard({
 
    return (
       <>
-         <motion.div className='bg-slate-100 border-2 rounded-lg px-12 py-6 flex flex-col gap-2 drop-shadow-md transition duration-100 hover:drop-shadow-xl'
+         <motion.div className='bg-gradient-to-r from-zinc-100 border-2 rounded-lg px-12 py-6 flex flex-col gap-2 drop-shadow-md transition duration-100 hover:drop-shadow-xl cursor-pointer'
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: .2 }}
             whileHover={{
-               scale: 1.01,
-               transition: { duration: .1 },
+               scale: 1.05,
+               transition: { duration: .15 },
             }}
             drag={true}
-            dragConstraints={{ left: -150, right: 150, top: -10, bottom: 150 }}
+            dragConstraints={{ left: -200, right: 200, top: -10, bottom: 300 }}
             dragElastic={false}
             dragTransition={{ bounceStiffness: 300, bounceDamping: 50 }}
          >
 
-            <div className='flex justify-between'>
-               <motion.h1 initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: .25, delay: .2 }} className='font-bold text-5xl'>{data.name} </motion.h1>
+            <div className='flex justify-between gap-3'>
+               <motion.h1 initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: .25, delay: .2 }} className='font-bold text-5xl'>{data.name.length > 20 ? data.name.subtring(0, 1): data.name} </motion.h1>
                <h2 className=''>{data.sys.country}</h2>
             </div>
 
