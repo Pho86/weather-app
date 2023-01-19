@@ -14,11 +14,19 @@ export default function WeatherCard({
 
    return (
       <>
-         <motion.div className='bg-slate-100 border-2 rounded-lg px-10 pb-5 pt-5 flex flex-col gap-2 drop-shadow-md transition duration-100 hover:drop-shadow-xl' initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: .2 }}
+         <motion.div className='bg-slate-100 border-2 rounded-lg px-12 py-6 flex flex-col gap-2 drop-shadow-md transition duration-100 hover:drop-shadow-xl'
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: .2 }}
             whileHover={{
                scale: 1.01,
                transition: { duration: .1 },
-            }}>
+            }}
+            drag={true}
+            dragConstraints={{ left: -150, right: 150, top: -10, bottom: 150 }}
+            dragElastic={false}
+            dragTransition={{ bounceStiffness: 300, bounceDamping: 50 }}
+         >
 
             <div className='flex justify-between'>
                <motion.h1 initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: .25, delay: .2 }} className='font-bold text-5xl'>{data.name} </motion.h1>
@@ -26,7 +34,7 @@ export default function WeatherCard({
             </div>
 
             <div className='flex justify-between gap-6'>
-               <div className='flex flex-col gap-2'>
+               <div className='flex flex-col gap-2 justify-between'>
                   <motion.div initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: .25, delay: .35 }}>
                      <p>Temperature</p><p className='text-2xl'><span className='font-bold text-4xl'>{data.main.temp}</span>℃</p>
                   </motion.div>
@@ -72,7 +80,7 @@ export default function WeatherCard({
                   {
                      data.weather && data.weather.map((w, i) => {
                         return <motion.div key={i} initial={{ x: 50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: .25, delay: .8 }}>
-                           <div className='capitalize text-right'>{w.main} &#x2022; {w.description}</div>
+                           <div className='capitalize text-right font-medium'>{w.main} &#x2022; {w.description}</div>
                         </motion.div>
                      })
                   }
