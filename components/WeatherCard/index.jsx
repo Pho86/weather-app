@@ -14,7 +14,7 @@ export default function WeatherCard({
 
    return (
       <>
-         <motion.div className='bg-gradient-to-r from-zinc-100 border-2 rounded-lg px-12 py-6 flex flex-col gap-2 drop-shadow-md transition duration-100 hover:drop-shadow-xl cursor-pointer'
+         <motion.div className='bg-gradient-to-t from-neutral-100 to-zinc-50 border-2 rounded-lg px-10 py-6 flex flex-col gap-2 drop-shadow-md transition duration-100 hover:drop-shadow-xl cursor-pointer mt-16'
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: .2 }}
@@ -23,13 +23,13 @@ export default function WeatherCard({
                transition: { duration: .15 },
             }}
             drag={true}
-            dragConstraints={{ left: -200, right: 200, top: -10, bottom: 300 }}
+            dragConstraints={{ left: -200, right: 200, top: -20, bottom: 200 }}
             dragElastic={false}
             dragTransition={{ bounceStiffness: 300, bounceDamping: 50 }}
          >
 
             <div className='flex justify-between gap-3'>
-               <motion.h1 initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: .25, delay: .2 }} className='font-bold text-5xl'>{data.name.length > 20 ? data.name.subtring(0, 1): data.name} </motion.h1>
+               <motion.h1 initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: .25, delay: .2 }} className='font-bold text-5xl'>{data.name.length > 20 ? data.name.subtring(0, 1) : data.name} </motion.h1>
                <h2 className=''>{data.sys.country}</h2>
             </div>
 
@@ -42,7 +42,7 @@ export default function WeatherCard({
                      <p>Feels like</p><p className='text-2xl'><span className='font-bold text-4xl'>{data.main.feels_like}</span>℃</p>
                   </motion.div>
                   <motion.div initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: .25, delay: .65 }}>
-                     <p>Wind speed is</p><p className='text-2xl'><span className='font-bold text-4xl'>{data.wind.speed}</span>m/s</p>
+                     <p>Wind gust is</p><p className='text-2xl'><span className='font-bold text-4xl'>{data.wind.gust ? data.wind.gust : data.wind.speed}</span>m/s</p>
                   </motion.div>
                </div>
 

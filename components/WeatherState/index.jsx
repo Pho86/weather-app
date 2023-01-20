@@ -6,14 +6,15 @@ import SunCloudyAnimation from "@/public/suncloudy.json";
 import CloudyAnimation from "@/public/cloudy.json";
 import SnowAnimation from "@/public/snowingfall.json"
 import MistAnimation from "@/public/mist.json"
-import ThunderAnimation from "@/public/Thunderstorm.json"
+import ThunderAnimation from "@/public/Thunderstorm.json";
+import Clouds from '../Clouds';
 
 export default function WeatherState({
    data = {},
 }) {
 
    return (
-      <div className='fixed pointer-events-none w-screen h-screen'>
+      <div className='fixed pointer-events-none w-screen h-screen flex items-center flex-col'>
          {
             (() => {
                if (data.weather) {
@@ -31,11 +32,11 @@ export default function WeatherState({
                   if (data.rain) {
                      return <Lottie animationData={RainyAnimation} loop={true} style={{ width: "100vw" }} />
                   }
-                  // if (data.clouds.all >= 20 && data.clouds.all < 50) {
-                  //    return <Lottie animationData={SunCloudyAnimation} loop={true} style={{ width: 0 }} />
-                  // }
+                  if (data.clouds.all >= 20) {
+                     return <Clouds/>
+                  }
                   // else if (data.clouds.all > 50) {
-                  //    return <Lottie animationData={CloudyAnimation} loop={true} style={{ width: 0 }} />
+                  //    return <Clouds/>
                   // }
                   // else {
                   //    return <Lottie animationData={SunAnimation} loop={true} style={{ width: 0 }} />

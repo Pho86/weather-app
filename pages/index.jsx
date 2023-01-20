@@ -51,14 +51,14 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main} bg-gradient-to-r from-indigo-50  to-blue-50`}>
+      <main className={`${styles.main} bg-gradient-to-t from-sky-50  to-sky-100`}>
         <Header />
 
         {data.name && <WeatherState data={data} />}
         <div className='h-screen mt-10 flex flex-col items-center' >
-          <div className="flex flex-col gap-10 items-center">
-            <input className="px-6 py-4 outline-none border-slate-500 border-2 rounded-xl bg-zinc-50 z-50 " type="text" value={location} onChange={event => setLocation(event.target.value)} placeholder="Enter location" onKeyDown={searchLocation} />
-            {errorMessage && <motion.span initial={{ x: 50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} className='text-red-500 font-bold text-lg mt-2'>{errorMessage}</motion.span>}
+          <div className="flex flex-col items-center">
+            <input className="px-6 py-4 outline-none border-slate-400 border-2 rounded-xl bg-gradient-to-t from-neutral-100 to-zinc-50 z-50 hover:drop-shadow-md" type="text" value={location} onChange={event => setLocation(event.target.value)} placeholder="Enter location" onKeyDown={searchLocation} />
+            {errorMessage && <motion.span initial={{ x: 50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} className='text-red-500 font-bold text-2xl mt-8'>{errorMessage}</motion.span>}
             {data.name && <WeatherCard data={data} />}
             {/* <div className='grid grid-flow-row-dense gap-5'>
               {allData && allData.map((data, i) => {
