@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import Lottie from "lottie-react";
 import RainyAnimation from "@/public/rainy.json";
-import SunAnimation from "@/public/sunny.json";
+import BigSunAnimation from "@/public/bigSun.json";
 import SunCloudyAnimation from "@/public/suncloudy.json";
 import CloudyAnimation from "@/public/cloudy.json";
 import SnowAnimation from "@/public/snowingfall.json"
@@ -35,12 +35,9 @@ export default function WeatherState({
                   if (data.clouds.all >= 20) {
                      return <Clouds/>
                   }
-                  // else if (data.clouds.all > 50) {
-                  //    return <Clouds/>
-                  // }
-                  // else {
-                  //    return <Lottie animationData={SunAnimation} loop={true} style={{ width: 0 }} />
-                  // }
+                  else {
+                     return <Lottie animationData={BigSunAnimation} loop={true} style={{ width: 1200, marginTop:-100 }} />
+                  }
                }
             })()
          }

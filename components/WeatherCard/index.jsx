@@ -29,7 +29,7 @@ export default function WeatherCard({
          >
 
             <div className='flex justify-between gap-3'>
-               <motion.h1 initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: .25, delay: .2 }} className='font-bold text-5xl'>{data.name.length > 20 ? data.name.subtring(0, 1) : data.name} </motion.h1>
+               <motion.h1 initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: .25, delay: .2 }} className='font-bold text-5xl'>{data.name.length > 15 ? data.name.substring(0, 20) + "..." : data.name} </motion.h1>
                <h2 className=''>{data.sys.country}</h2>
             </div>
 
