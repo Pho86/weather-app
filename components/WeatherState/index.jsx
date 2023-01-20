@@ -33,10 +33,16 @@ export default function WeatherState({
                      return <Lottie animationData={RainyAnimation} loop={true} style={{ width: "100vw" }} />
                   }
                   if (data.clouds.all >= 20) {
-                     return <Clouds/>
+                     return <Clouds />
                   }
                   else {
-                     return <Lottie animationData={BigSunAnimation} loop={true} style={{ width: 1200, marginTop:-100 }} />
+                     return <motion.div
+                        initial={{ y: 50 }}
+                        animate={{ y: -50 }}
+                        transition={{ ease: "easeInOut", duration: 10, repeat: Infinity, repeatType:"reverse", repeatDelay: 1 }}
+                     >
+                        <Lottie animationData={BigSunAnimation} loop={true} style={{ width: 1200, marginTop: -100 }} />
+                     </motion.div>
                   }
                }
             })()

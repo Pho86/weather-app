@@ -46,7 +46,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Simple Weather Application</title>
+        <title>Weather Application</title>
         <meta name="description" content="This web application will display information based off the city location, such as the current temperature (in celsius), what it feels like, the gust speed, the name." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -54,17 +54,17 @@ export default function Home() {
       <main className={`${styles.main} bg-gradient-to-t from-sky-50  to-sky-100`}>
         <Header />
 
-        {data.name && <WeatherState data={data} />}
+        {data.weather && <WeatherState data={data} />}
         <div className='h-screen mt-10 flex flex-col items-center' >
           <div className="flex flex-col items-center">
             <input className="px-6 py-4 outline-none border-slate-400 border-2 rounded-xl bg-gradient-to-t from-neutral-100 to-zinc-50 z-50 hover:drop-shadow-md" type="text" value={location} onChange={event => setLocation(event.target.value)} placeholder="Enter location" onKeyDown={searchLocation} />
             {errorMessage && <motion.span initial={{ x: 50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} className='text-red-500 font-bold text-2xl mt-5'>{errorMessage}</motion.span>}
             {data.name && <WeatherCard data={data} />}
-            <div className='grid grid-flow-row-dense grid-cols-2 gap-5'>
-              {/* {allData && allData.map((data, i) => {
+            {/* <div className='grid grid-flow-row-dense grid-cols-2 gap-5'>
+              {allData && allData.map((data, i) => {
                 return <WeatherCard data={data} key={i} />
-              })} */}
-            </div>
+              })}
+            </div> */}
           </div>
         </div>
       </main>

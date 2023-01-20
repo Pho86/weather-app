@@ -1,5 +1,5 @@
 # Tao Weather Web Application
-This web application will display information based off the city location, such as the current temperature (in celsius), what it feels like, the gust speed, the name.
+This web application will display information based off an inputted city location, such as the current temperature (in celsius), what it feels like, the gust speed, and the weather. It also will display a small animation based off of what the current weather is.
 
 The api used for the web application is [OpenWeatherMapApi](https://openweathermap.org/).
 
@@ -18,8 +18,8 @@ The api used for the web application is [OpenWeatherMapApi](https://openweatherm
 
 3. `npm install` or `yarn install` or any other package installer to install the required packages.
 
-4. Add environment variables from [OpenWeatherMapApi](https://openweathermap.org/) and then place in `.env.local` by following the `.env.example` file.
-> The key in the file should be added to a variable named `NEXT_PUBLIC_WEATHER_API_KEY`.
+4. Add environment variables from [OpenWeatherMapApi](https://openweathermap.org/) and then make and place in `.env.local` or `.env` by following the `.env.example` file.
+> The key in the env file should be added to a variable named `NEXT_PUBLIC_WEATHER_API_KEY`.
 
 5. Run the app with `npm run dev` or `yarn dev` to run the app.
 
