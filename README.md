@@ -1,14 +1,15 @@
-# Simple Weather Web Application
+# Tao Weather Web Application
 This web application will display information based off the city location, such as the current temperature (in celsius), what it feels like, the gust speed, the name.
 
 The api used for the web application is [OpenWeatherMapApi](https://openweathermap.org/).
 
-Technologies used in the web application: 
+## Technologies used in the web application: 
 * Next JS
 * React
 * Tailwindcss
 * Axios
 * Framer Motion
+* Lottie React
 
 ## How to run the application
 1. `git clone https://github.com/Pho86/weather.git` to clone the repository.
