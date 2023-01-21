@@ -2,17 +2,12 @@ import { motion } from 'framer-motion';
 import Lottie from "lottie-react";
 import RainyAnimation from "@/public/rainy.json";
 import BigSunAnimation from "@/public/bigSun.json";
-import SunCloudyAnimation from "@/public/suncloudy.json";
-import CloudyAnimation from "@/public/cloudy.json";
 import SnowAnimation from "@/public/snowingfall.json"
-import MistAnimation from "@/public/mist.json"
-import ThunderAnimation from "@/public/Thunderstorm.json";
 import Clouds from '../Clouds';
-
 export default function WeatherState({
    data = {},
 }) {
-
+   
    return (
       <div className='fixed pointer-events-none w-screen h-screen flex items-center flex-col'>
          {
@@ -20,14 +15,9 @@ export default function WeatherState({
                if (data.weather) {
                   for (let i = 0; i < data.weather.length; i++) {
                      if (data.weather[i].main == "Snow" || data.snow) {
+                        background = 'red'
                         return <Lottie animationData={SnowAnimation} loop={true} style={{ width: "100vw", height: "100vh" }} />
                      }
-                     // if (data.weather[i].main == "Mist") {
-                     //    return <Lottie animationData={MistAnimation} loop={true} style={{ width: 0 }} />
-                     // }
-                     // if (data.weather[i].main == "Thunderstorm") {
-                     //    return <Lottie animationData={ThunderAnimation} loop={true} style={{ width: 0 }} />
-                     // }
                   }
                   if (data.rain) {
                      return <Lottie animationData={RainyAnimation} loop={true} style={{ width: "100vw" }} />
