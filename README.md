@@ -1,4 +1,4 @@
-# Tao Weather Web Application
+# Simple Weather Web Application
 This web application will display information based off an inputted city location, such as the current temperature (in celsius), what it feels like, the gust speed, and the weather. It also will display a small animation based off of what the current weather is.
 
 The api used for the web application is [OpenWeatherMapApi](https://openweathermap.org/).
