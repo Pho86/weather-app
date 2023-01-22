@@ -14,14 +14,14 @@ export default function Home() {
   const [errorMessage, setErrorMessage] = useState('');
 
   const [allData, setAllData] = useState([]);
-  const [forecast, setforecast] = useState()
+  // const [forecast, setforecast] = useState()
   const [weatherClass, setWeatherClass] = useState('from-sky-50  to-sky-100');
 
   let apiKey = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
   let lang = "en";
   let units = "metric";
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${units}&appid=${apiKey}&lang=${lang}`;
-  const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=${units}&appid=${apiKey}&lang=${lang}`;
+  // const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=${units}&appid=${apiKey}&lang=${lang}`;
 
   const searchLocation = async (event) => {
     if (event.key === "Enter") {
@@ -34,6 +34,7 @@ export default function Home() {
         setData(resdata)
         allData.unshift(resdata)
         setErrorMessage("")
+        // console.log(resdata)
       }
       catch (error) {
         console.log(error);
