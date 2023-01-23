@@ -7,7 +7,7 @@ export default function Header() {
                Today's Weather Overview
             </li>
             <a href="https://github.com/Pho86" target="_blank">
-               <li className="font-semibold text-xl text-white">
+               <li className="font-medium text-xl text-white">
                   Made by Philip Ho 🙊
                </li>
             </a>
