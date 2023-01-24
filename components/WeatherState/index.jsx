@@ -15,7 +15,6 @@ export default function WeatherState({
                if (data.weather) {
                   for (let i = 0; i < data.weather.length; i++) {
                      if (data.weather[i].main == "Snow" || data.snow) {
-                        background = 'red'
                         return <Lottie animationData={SnowAnimation} loop={true} style={{ width: "100vw", height: "100vh" }} />
                      }
                   }
